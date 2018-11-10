@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Java Compiler</title>
+<h3>
+	<span style="color: #333399;">Java Compiler</span>
+</h3>
+</head>
+<body>
+
+	<script>
+		function compile() {
+			var code = document.getElementById("holder").value;
+
+			var request = new XMLHttpRequest();
+			request.open('GET', 'http://localhost:8000/run-code?code=' + code,
+					true);
+			request.onload = function() {
+				var data = JSON.parse(this.response);
+				contentString = data.output;
+				document.getElementById("output").value = contentString;
+			}
+			request.send();
+
+		}
+	</script>
+
+	<p>
+		<textarea id="holder" cols="90" rows="20">  
+ 
+
+</textarea>
+		<br />
+		<button onclick="compile()">
+			<span style="color: #000080; background-color: #ffffff;"><strong>Compile</strong></span>
+		</button>
+		<br /> <br />
+		<textarea id="output" cols="90" rows="4"> </textarea>
+	</p>
+
+
+</body>
+</html>
