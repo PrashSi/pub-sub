@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 public class CompilerService {
 
 	public String compile(String code) throws IOException, InterruptedException {
-		System.out.println("Tyring to write Solution.java " + code);
+
+		// write and create java class.
 		Files.write(Paths.get("Solution.java"), wrap(code).getBytes());
 
 		Runtime.getRuntime().exec("javac Solution.java").waitFor();
@@ -27,6 +28,7 @@ public class CompilerService {
 
 	private String wrap(String code) {
 
+		// wrapping the code into a java file..which writes the output to the output.txt
 		return "import java.*;\n" + "import java.io.IOException;\n" + "import java.nio.file.Files;\n"
 				+ "import java.nio.file.Paths;\n" + "\n" + "public class Solution {\n" + "\n"
 				+ "	public static void main(String args[])  throws IOException {\n" + "\n"
