@@ -19,6 +19,7 @@ public class CompilerRestController {
 
 	@RequestMapping("/run-code")
 	public Map<String, String> compile(@RequestParam String code) throws IOException, InterruptedException {
+
 		Map<String, String> response = new HashMap<>();
 		response.put("output", this.compilerService.compile(code));
 		return response;

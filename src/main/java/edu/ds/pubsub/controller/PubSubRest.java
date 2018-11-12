@@ -17,11 +17,9 @@ public class PubSubRest {
 	private PubSubAdmin admin;
 
 	@RequestMapping(value = "/subscribe", method = RequestMethod.GET)
-	public String subscribe(@RequestParam String topic, @RequestParam String subscriptionId) {
-		//
-		System.out.println("inside subscribe.");
-		admin.subscribe(topic, subscriptionId);
+	public String subscribe(@RequestParam String topic, @RequestParam String subscriptionId , @RequestParam Integer  node) {
 
+		admin.subscribe(topic, subscriptionId, node);
 		return "Success";
 	}
 
@@ -29,8 +27,6 @@ public class PubSubRest {
 	public String publish(@RequestParam String topic, @RequestBody Message message) {
 
 		admin.publish(topic, message);
-
 		return "Success";
 	}
-
 }

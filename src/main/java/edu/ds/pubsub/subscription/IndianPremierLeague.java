@@ -1,7 +1,10 @@
 package edu.ds.pubsub.subscription;
 
-import javax.annotation.PostConstruct;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import edu.ds.pubsub.type.Message;
@@ -12,10 +15,12 @@ import edu.ds.pubsub.type.UIMessage;
  */
 @Component
 public class IndianPremierLeague extends Subscriber {
-	// @Scheduled(initialDelay = 4000)
-	@PostConstruct
+
+	@Autowired
+	private Environment env;
+
 	public void subscribe() {
-		super.subscribe("Cricket", "IPL");
+		super.subscribe("Cricket", getSubscriptionId(), Integer.parseInt(env.getProperty("node")));
 	}
 
 	/*
@@ -26,12 +31,12 @@ public class IndianPremierLeague extends Subscriber {
 	 */
 	@Override
 	public void receiveMessage(Message message) {
-		super.messages.add(new UIMessage("Received by IPL: " + message.toString()));
-		System.out.println("Message received by IPL: " + message.toString());
+		super.messages.add(new UIMessage(message.toString()));
+		System.out.println("Received by IPL: " + message.toString());
 	}
 
 	@Override
 	public String getSubscriptionId() {
-		return "IPL";
+		return "IPL-Node-" + env.getProperty("node");
 	}
 }

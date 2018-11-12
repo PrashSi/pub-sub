@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  node1:
+    image: pub-sub
+    extra_hosts:
+      - "machost:192.168.1.158"
+#    network_mode: "host"
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    environment:
+       - "SPRING_PROFILES_ACTIVE=node1"  
+     
+  node2:
+    image: pub-sub
+    extra_hosts:
+      - "machost:192.168.1.158"
+#    network_mode: "host"
+    expose:
+      - "7000"
+    ports:
+      - "7000:7000"
+    environment:
+       - "SPRING_PROFILES_ACTIVE=node2"  
+
+  node3:
+    image: pub-sub
+    extra_hosts:
+      - "machost:192.168.1.158"
+#    network_mode: "host"
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=node3"  
+ 

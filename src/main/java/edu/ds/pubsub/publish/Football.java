@@ -15,7 +15,8 @@ public class Football extends Publisher {
 	public void publish() {
 		count++;
 		System.out.println("Publishing message " + count);
-		Message message = new Message(count, "Published by Football fans...");
+		Message message = new Message(count, Integer.parseInt(env.getProperty("node")),
+				"Published by Football fans...");
 		messages.add(new UIMessage("On topic: Football, with Id:" + count));
 		super.publish("Football", message);
 	}

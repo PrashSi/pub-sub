@@ -1,6 +1,7 @@
 package edu.ds.pubsub.publish;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,13 @@ public abstract class Publisher {
 	@Autowired(required = true)
 	public RestTemplate restTemplate;
 
+	public static void publish(String url, String topic, Message message) {
+
+		RestTemplate rest = new RestTemplate();
+		url = url.concat("/publish").concat("?topic=").concat(topic);
+		rest.postForEntity(url, message, String.class);
+	}
+
 	public void publish(String topic, Message message) {
 
 		String url = nearestNode().concat("/publish").concat("?topic=").concat(topic);
@@ -29,6 +37,6 @@ public abstract class Publisher {
 		return "http://localhost:" + env.getProperty("server.port");
 	}
 
-	public static List<UIMessage> messages = new ArrayList<>();
+	public static List<UIMessage> messages = Collections.synchronizedList(new ArrayList<>());
 
 }

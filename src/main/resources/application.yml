@@ -1,0 +1,29 @@
+spring:
+  profiles: node1
+
+node: 1
+
+server:
+  port: 8000
+  
+  
+---
+
+spring:
+  profiles: node2
+  
+node: 2
+
+server:
+  port: 7000
+  
+---
+
+spring:
+  profiles: node3
+  
+node: 3
+
+server:
+  port: 8080
+---

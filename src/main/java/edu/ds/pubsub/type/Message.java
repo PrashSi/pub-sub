@@ -7,11 +7,13 @@ package edu.ds.pubsub.type;
 public class Message {
 
 	private Integer id;
+	private Integer node;
 	private String text;
 
-	public Message(Integer id, String text) {
+	public Message(Integer id, Integer node, String text) {
 
 		this.id = id;
+		this.node = node;
 		this.text = text;
 	}
 
@@ -33,6 +35,14 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", text=" + text + "]";
+		return "Message [id=" + id + ", node=" + node + ", text=" + text + "]";
+	}
+
+	public Integer getNode() {
+		return node;
+	}
+
+	public void setNode(Integer node) {
+		this.node = node;
 	}
 }
