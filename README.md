@@ -1,5 +1,5 @@
-# Publish Subscriber System using filter based routing algorithm.
-Distributed Systems Project 2: Simulate pub/sub using a centralized pub/sub system.
+# Publish Subscriber System 
+Distributed Systems Project 2: Simulate pub/sub using the filter based routing algorithm.
 
 Publish Subscribe system was created using using filter based routing algorithm. In this example I have used 3 nodes or docker images that act as the brokers and relay message between netork of brokers. Each broker maintain its own routing table and keeps the list of subscription. There are total of 6 predefined publishers which publishes messages on 2 topics in a scheduled interval. 
 
