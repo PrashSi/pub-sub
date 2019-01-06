@@ -13,7 +13,7 @@ Important:
 *You should also replace extra-host with your system IP in docker-compose otherwise it will not work.*
 
 Step 1: cd ../pub-sub<br />
-Step 2: mvn install<br /> // This should create a excutable JAR in the ../pub-sub/target folder<br />
+Step 2: mvn install // This should create a excutable JAR in the ../pub-sub/target folder<br />
 Step 3: docker build -t pub-sub<br />
 Step 4: docker-compose up<br />
 
